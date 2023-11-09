@@ -12,15 +12,19 @@ const config: Config = {
         white: '#fff',
         gray:{
           'ip-100': '#e1e1e6',
-          'ip-300': '#c4c4cc',
+          'ip-200': '#c4c4cc',
+          'ip-300': '#313234',
           'ip-800': '#202024',
-          'ip-900': '#121214'
+          'ip-900': '#121214',
         },
         green:{
           'ip-300':'#00b37e',
           'ip-500': '#00875f',
-        }
+        },
       },
+      boxShadow: {
+        'ip': 'inset 0 0 20px #00b37e',
+      }
     },
   },
   plugins: [],
