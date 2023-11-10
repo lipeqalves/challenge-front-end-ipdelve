@@ -1,7 +1,10 @@
-export default function Personagens(params) {
-  return(
-    <h1>
-      Personagem
-    </h1>
+import CardPersonagem from '../../components/CardPersonagem'
+
+/* eslint-disable react/react-in-jsx-scope */
+export default function Personagens() {
+  return (
+    <main>
+      <CardPersonagem />
+    </main>
   )
 }
