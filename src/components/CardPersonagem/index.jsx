@@ -16,7 +16,10 @@ export default function CardPersonagem() {
         <stron className={`${creepster.className}`}>Rick Sanchez</stron>
         <span className={`${spectral400.className}`}>Humano</span>
       </footer>
-      <Link href={''} className="flex items-center justify-center p-4">
+      <Link
+        href={'/personagens/personagem'}
+        className="flex items-center justify-center p-4"
+      >
         <button
           className={`w-3/5 bg-green-rm-300 hover:bg-green-rm-500 rounded-lg flex items-center  justify-center gap-1 `}
         >
