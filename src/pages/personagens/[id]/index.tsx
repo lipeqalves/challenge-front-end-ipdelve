@@ -9,10 +9,9 @@ import {
   Pulse,
   Video,
   Planet,
-  Info,
   MapPin
 } from '@phosphor-icons/react'
-import Link from 'next/link'
+
 import { useRouter } from 'next/router'
 import { GetStaticPaths, GetStaticProps } from 'next'
 export interface CharacterDetalhesProps {
