@@ -4,20 +4,36 @@ import Link from 'next/link'
 import { Info } from '@phosphor-icons/react'
 
 import { spectral700, spectral400, creepster } from '../../styles/fonts'
-import img from '../../assets/image_2.png'
 
-export default function CardPersonagem() {
+interface CardPersonagemProps {
+  id: number
+  name: string
+  species: string
+  image: string
+}
+export default function CardPersonagem({
+  name,
+  species,
+  id,
+  image
+}: CardPersonagemProps) {
   return (
     <section
       className={`w-64 h-80 bg-gray-rm-300 rounded-t-lg ${spectral700.className}`}
     >
-      <Image src={img} className="w-64 h-48 my-4 rounded-t-lg" />
+      <Image
+        src={image}
+        width={256}
+        height={200}
+        className="w-64 h-48 my-4 rounded-t-lg object-cover"
+        alt={''}
+      />
       <footer className="flex flex-col ml-4 ">
-        <stron className={`${creepster.className}`}>Rick Sanchez</stron>
-        <span className={`${spectral400.className}`}>Humano</span>
+        <strong className={`${creepster.className}`}>{name}</strong>
+        <span className={`${spectral400.className}`}>{species}</span>
       </footer>
       <Link
-        href={'/personagens/personagem'}
+        href={`/personagens/${id}`}
         className="flex items-center justify-center p-4"
       >
         <button

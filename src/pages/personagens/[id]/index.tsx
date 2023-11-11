@@ -14,6 +14,7 @@ import {
   MapPin
 } from '@phosphor-icons/react'
 import Link from 'next/link'
+//import { useRouter } from 'next/router'
 
 export default function DetalhePersonagem() {
   return (
@@ -24,8 +25,10 @@ export default function DetalhePersonagem() {
         <Image
           src={personagem}
           className="h-full w-full object-cover rounded-2xl shadow-img"
+          alt={''}
         />
       </div>
+
       <div className="w-1/2 h-3/4 ">
         <h1 className={`${creepster.className} mt-6 text-2xl`}>Rick Sanchez</h1>
         <p className="flex justify-center gap-4 my-4">
