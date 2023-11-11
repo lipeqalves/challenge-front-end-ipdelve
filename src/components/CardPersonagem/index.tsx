@@ -11,29 +11,24 @@ interface CardPersonagemProps {
   species: string
   image: string
 }
-export default function CardPersonagem({
-  name,
-  species,
-  id,
-  image
-}: CardPersonagemProps) {
+export default function CardPersonagem(props: CardPersonagemProps) {
   return (
     <section
       className={`w-64 h-80 bg-gray-rm-300 rounded-t-lg ${spectral700.className}`}
     >
       <Image
-        src={image}
+        src={props.image}
         width={256}
         height={200}
-        className="w-64 h-48 my-4 rounded-t-lg object-cover"
+        className="w-64 h-48 rounded-t-lg object-cover"
         alt={''}
       />
-      <footer className="flex flex-col ml-4 ">
-        <strong className={`${creepster.className}`}>{name}</strong>
-        <span className={`${spectral400.className}`}>{species}</span>
+      <footer className="flex flex-col ml-4 mt-4">
+        <strong className={`${creepster.className}`}>{props.name}</strong>
+        <span className={`${spectral400.className}`}>{props.species}</span>
       </footer>
       <Link
-        href={`/personagens/${id}`}
+        href={`/personagens/${props.id}`}
         className="flex items-center justify-center p-4"
       >
         <button
