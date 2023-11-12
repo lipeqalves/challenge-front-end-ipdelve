@@ -27,12 +27,14 @@ export interface CharacterDetalhesProps {
     episode: number
   }
 }
-export default function DetalhePersonagem(character: CharacterDetalhesProps) {
+export default function DetalhePersonagem(
+  character: Readonly<CharacterDetalhesProps>
+) {
   const router = useRouter()
   if (router.isFallback) {
     return <div>Carregando...</div>
   }
-  console.log(character.character.image)
+
   return (
     <section
       className={`${spectral400.className}  flex justify-between items-center h-full max-w-5xl my-2 mx-auto text-center `}
@@ -92,14 +94,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: true
   }
 }
-export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
-  params
-}) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id
   const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
   const data = await res.json()
-  console.log(data)
-  console.log(data.location)
+
   return {
     props: {
       character: {

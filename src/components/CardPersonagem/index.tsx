@@ -11,7 +11,7 @@ interface CardPersonagemProps {
   species: string
   image: string
 }
-export default function CardPersonagem(props: CardPersonagemProps) {
+export default function CardPersonagem(props: Readonly<CardPersonagemProps>) {
   return (
     <section
       className={`w-64 h-80 bg-gray-rm-300 rounded-t-lg ${spectral700.className}`}
