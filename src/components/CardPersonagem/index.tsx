@@ -21,7 +21,7 @@ export default function CardPersonagem(props: Readonly<CardPersonagemProps>) {
         width={256}
         height={200}
         className="w-64 h-48 rounded-t-lg object-cover"
-        alt={''}
+        alt={props.name}
       />
       <footer className="flex flex-col ml-4 mt-4">
         <strong className={`${creepster.className}`}>{props.name}</strong>

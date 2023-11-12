@@ -1,21 +1,40 @@
-import { useState } from 'react'
+import { SetStateAction, useEffect, useState } from 'react'
 import CardPersonagem from '../../components/CardPersonagem'
 import { MagnifyingGlass } from '@phosphor-icons/react'
+import { Pagination } from '@mui/material'
+import { useRouter } from 'next/router'
+import { useQuery } from '@tanstack/react-query'
 
 /* eslint-disable react/react-in-jsx-scope */
-export interface CharacterProps {
-  characters: {
-    id: number
-    name: string
-    species: string
-    image: string
-  }[]
-}
-export default function Personagens({ characters }: Readonly<CharacterProps>) {
+
+export default function Personagens() {
+  const [page, setPage] = useState(1)
   const [search, setSearch] = useState('')
-  const searchCharacters = characters.filter((character) =>
-    character.name.toLowerCase().includes(search.toLowerCase())
+  const router = useRouter()
+
+  const { data } = useQuery({
+    queryKey: ['repoData', page],
+    queryFn: () =>
+      fetch(`https://rickandmortyapi.com/api/character/?page=${page}`).then(
+        (res) => res.json()
+      )
+  })
+
+  const searchCharacters = data?.results?.filter(
+    (character: { name: string }) =>
+      character.name.toLowerCase().includes(search.toLowerCase())
   )
+
+  useEffect(() => {
+    if (router.query.page) {
+      setPage(Number(router.query.page))
+    }
+  }, [router.query.page])
+
+  function handlePaginationChange(e: any, value: SetStateAction<number>) {
+    setPage(value)
+    router.push(`personagens/?page=${value}`, undefined, { shallow: true })
+  }
 
   return (
     <main className="flex flex-wrap gap-8 w-10/12 items-center justify-center mt-28 mb-12 mx-auto relative">
@@ -37,28 +56,28 @@ export default function Personagens({ characters }: Readonly<CharacterProps>) {
           />
         </div>
       </form>
-
-      {searchCharacters.map((character) => (
-        <CardPersonagem
-          key={character.id}
-          id={character.id}
-          name={character.name}
-          species={character.species}
-          image={character.image}
-        />
-      ))}
+      {searchCharacters.map(
+        (character: {
+          id: number
+          name: string
+          species: string
+          image: string
+        }) => (
+          <CardPersonagem
+            key={character.id}
+            id={character.id}
+            name={character.name}
+            species={character.species}
+            image={character.image}
+          />
+        )
+      )}
+      <Pagination
+        count={data?.info.pages}
+        color="primary"
+        page={page}
+        onChange={handlePaginationChange}
+      />
     </main>
   )
-}
-
-export async function getStaticProps() {
-  const res = await fetch('https://rickandmortyapi.com/api/character')
-  const data = await res.json()
-
-  return {
-    props: {
-      characters: data.results
-    },
-    revalidate: 60
-  }
 }

@@ -13,9 +13,9 @@ import {
 } from '@phosphor-icons/react'
 
 import { useRouter } from 'next/router'
-import { GetStaticPaths, GetStaticProps } from 'next'
-export interface CharacterDetalhesProps {
-  character: {
+
+export interface CharacterDetailsProps {
+  characterDetails: {
     id: number
     name: string
     species: string
@@ -27,8 +27,8 @@ export interface CharacterDetalhesProps {
     episode: number
   }
 }
-export default function DetalhePersonagem(
-  character: Readonly<CharacterDetalhesProps>
+export default function CharacterDetails(
+  character: Readonly<CharacterDetailsProps>
 ) {
   const router = useRouter()
   if (router.isFallback) {
@@ -41,45 +41,45 @@ export default function DetalhePersonagem(
     >
       <div className="w-1/2 h-3/4 ">
         <Image
-          src={character.character.image}
+          src={character.characterDetails.image}
           width={520}
           height={520}
           className="object-cover rounded-2xl shadow-img"
-          alt={''}
+          alt={character.characterDetails.name}
         />
       </div>
 
       <div className="w-1/2 h-3/4 ">
         <h1 className={`${creepster.className} mt-6 text-2xl`}>
-          {character.character.name}
+          {character.characterDetails.name}
         </h1>
         <p className="flex justify-center gap-4 my-4">
           {' '}
-          <Video size={24} /> Participou de {character.character.episode}{' '}
+          <Video size={24} /> Participou de {character.characterDetails.episode}{' '}
           episódios
         </p>
         <ul className="flex flex-col gap-2 justify-center items-start ml-8 my-2">
           <li className="flex gap-2">
             {' '}
-            <Pulse size={24} /> {character.character.status}
+            <Pulse size={24} /> {character.characterDetails.status}
           </li>
           <li className="flex gap-2">
-            <Alien size={24} /> {character.character.species}
+            <Alien size={24} /> {character.characterDetails.species}
           </li>
           <li className="flex gap-2">
             {' '}
-            <GenderIntersex size={24} /> {character.character.gender}
+            <GenderIntersex size={24} /> {character.characterDetails.gender}
           </li>
         </ul>
         <div className="flex w-full justify-evenly items-center gap-2">
           <div className="flex flex-col items-center justify-around bg-gray-rm-300 w-36 h-40 rounded-2xl">
             <Planet size={32} />
             <p>Planet</p>
-            <p>{character.character.origin}</p>
+            <p>{character.characterDetails.origin}</p>
           </div>
           <div className="flex flex-col items-center justify-around bg-gray-rm-300 w-36 h-40 rounded-2xl">
             <MapPin size={32} />
-            <p className="w-1/2">{character.character.location}</p>
+            <p className="w-1/2">{character.characterDetails.location}</p>
             <p></p>
           </div>
         </div>
@@ -88,20 +88,26 @@ export default function DetalhePersonagem(
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export async function getStaticPaths() {
+  const res = await fetch(`https://rickandmortyapi.com/api/character`)
+  const data = await res.json()
+
+  const paths = data.results.map((data: { id: number }) => ({
+    params: { id: data.id.toString() }
+  }))
   return {
-    paths: [],
-    fallback: true
+    paths,
+    fallback: 'blocking'
   }
 }
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const id = params?.id
+export async function getStaticProps({ params }) {
+  const id = params.id
   const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
   const data = await res.json()
 
   return {
     props: {
-      character: {
+      characterDetails: {
         id: data.id,
         name: data.name,
         species: data.species,
@@ -112,6 +118,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         location: data.location.name,
         episode: data.episode.length
       }
-    }
+    },
+    revalidate: 120
   }
 }

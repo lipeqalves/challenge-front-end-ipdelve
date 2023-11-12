@@ -9,7 +9,12 @@ export default function Home() {
       className={` my-0 mx-auto  h-96 flex flex-col justify-around items-start `}
     >
       <div className="w-80 flex items-center justify-center">
-        <Image src={logoHome} width={160} className="object-cover" alt={''} />
+        <Image
+          src={logoHome}
+          width={160}
+          className="object-cover"
+          alt={'logo: Rick and Morty'}
+        />
       </div>
 
       <p className={`text-5xl w-96 h-28 ${spectral700.className}`}>
