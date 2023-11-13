@@ -2,14 +2,19 @@
 import { useQuery } from '@tanstack/react-query'
 import CardLocation from '../../components/CardLocation'
 import Search from '../../components/Search'
-import { useState } from 'react'
+import { SetStateAction, useState } from 'react'
+import { Pagination } from '@mui/material'
+import { useRouter } from 'next/router'
 export default function Location() {
   const [search, setSearch] = useState('')
+  const [page, setPage] = useState(1)
+  const router = useRouter()
+
   const { isLoading, error, data } = useQuery({
-    queryKey: ['location'],
+    queryKey: ['location', page],
     queryFn: () =>
-      fetch(`https://rickandmortyapi.com/api/location/?page=${1}`).then((res) =>
-        res.json()
+      fetch(`https://rickandmortyapi.com/api/location/?page=${page}`).then(
+        (res) => res.json()
       )
   })
 
@@ -19,6 +24,14 @@ export default function Location() {
   const searchLocations = data?.results?.filter((location: { name: string }) =>
     location.name.toLowerCase().includes(search.toLowerCase())
   )
+
+  function handlePaginationChange(
+    e: React.SyntheticEvent<EventTarget>,
+    value: SetStateAction<number>
+  ) {
+    setPage(value)
+    router.push(`location/?page=${value}`, undefined, { shallow: true })
+  }
   return (
     <main className="flex flex-wrap gap-8 w-10/12 items-center justify-center mt-28 mb-12 mx-auto relative">
       <Search>
@@ -49,6 +62,12 @@ export default function Location() {
           />
         )
       )}
+      <Pagination
+        count={data?.info?.pages}
+        color="primary"
+        page={page}
+        onChange={handlePaginationChange}
+      />
     </main>
   )
 }

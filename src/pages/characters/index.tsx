@@ -1,9 +1,9 @@
 import { SetStateAction, useEffect, useState } from 'react'
 import CardCharacter from '../../components/CardCharacter'
-import { MagnifyingGlass } from '@phosphor-icons/react'
 import { Pagination } from '@mui/material'
 import { useRouter } from 'next/router'
 import { useQuery } from '@tanstack/react-query'
+import Search from '@/components/Search'
 
 /* eslint-disable react/react-in-jsx-scope */
 
@@ -31,33 +31,29 @@ export default function Character() {
     }
   }, [router.query.page])
 
-  function handlePaginationChange(e: any, value: SetStateAction<number>) {
+  function handlePaginationChange(
+    e: React.SyntheticEvent<EventTarget>,
+    value: SetStateAction<number>
+  ) {
     setPage(value)
-    router.push(`personagens/?page=${value}`, undefined, { shallow: true })
+    router.push(`characters/?page=${value}`, undefined, { shallow: true })
   }
 
   if (isLoading) return 'Loading...'
   if (error) return 'An error has occurred: ' + error.message
   return (
     <main className="flex flex-wrap gap-8 w-10/12 items-center justify-center mt-28 mb-12 mx-auto relative">
-      <form className=" absolute -top-20 w-1/2">
-        <div className="relative">
-          <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <MagnifyingGlass
-              size={32}
-              className="w-4 h-4 text-gray-500 dark:text-gray-400"
-            />
-          </div>
-          <input
-            type="search"
-            id="search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-green-rm-300"
-            placeholder="Search"
-          />
-        </div>
-      </form>
+      <Search>
+        {' '}
+        <input
+          type="search"
+          id="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-green-rm-300"
+          placeholder="Search"
+        />
+      </Search>
       {searchCharacters?.map(
         (character: {
           id: number
