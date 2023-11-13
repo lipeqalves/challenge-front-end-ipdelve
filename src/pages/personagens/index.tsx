@@ -6,20 +6,26 @@ import { useRouter } from 'next/router'
 import { useQuery } from '@tanstack/react-query'
 
 /* eslint-disable react/react-in-jsx-scope */
-
+export interface CharacterProps {
+  character: {
+    id: number
+    name: string
+    species: string
+    image: string
+  }[]
+}
 export default function Personagens() {
   const [page, setPage] = useState(1)
   const [search, setSearch] = useState('')
   const router = useRouter()
 
-  const { data } = useQuery({
+  const { isLoading, error, data } = useQuery({
     queryKey: ['repoData', page],
     queryFn: () =>
       fetch(`https://rickandmortyapi.com/api/character/?page=${page}`).then(
         (res) => res.json()
       )
   })
-
   const searchCharacters = data?.results?.filter(
     (character: { name: string }) =>
       character.name.toLowerCase().includes(search.toLowerCase())
@@ -36,6 +42,8 @@ export default function Personagens() {
     router.push(`personagens/?page=${value}`, undefined, { shallow: true })
   }
 
+  if (isLoading) return 'Loading...'
+  if (error) return 'An error has occurred: ' + error.message
   return (
     <main className="flex flex-wrap gap-8 w-10/12 items-center justify-center mt-28 mb-12 mx-auto relative">
       <form className=" absolute -top-20 w-1/2">

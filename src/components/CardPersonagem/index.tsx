@@ -19,8 +19,8 @@ export default function CardPersonagem(props: Readonly<CardPersonagemProps>) {
       <Image
         src={props.image}
         width={256}
-        height={200}
-        className="w-64 h-48 rounded-t-lg object-cover"
+        height={192}
+        className="h-48 rounded-t-lg object-cover"
         alt={props.name}
       />
       <footer className="flex flex-col ml-4 mt-4">

@@ -32,7 +32,7 @@ export default function CharacterDetails(
 ) {
   const router = useRouter()
   if (router.isFallback) {
-    return <div>Carregando...</div>
+    return <div>Loading...</div>
   }
 
   return (
