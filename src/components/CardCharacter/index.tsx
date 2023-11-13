@@ -5,13 +5,13 @@ import { Info } from '@phosphor-icons/react'
 
 import { spectral700, spectral400, creepster } from '../../styles/fonts'
 
-interface CardPersonagemProps {
+interface CardCharacterProps {
   id: number
   name: string
   species: string
   image: string
 }
-export default function CardPersonagem(props: Readonly<CardPersonagemProps>) {
+export default function CardCharacter(props: Readonly<CardCharacterProps>) {
   return (
     <section
       className={`w-64 h-80 bg-gray-rm-300 rounded-t-lg ${spectral700.className}`}

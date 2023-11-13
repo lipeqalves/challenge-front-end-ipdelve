@@ -1,20 +1,13 @@
 import { SetStateAction, useEffect, useState } from 'react'
-import CardPersonagem from '../../components/CardPersonagem'
+import CardCharacter from '../../components/CardCharacter'
 import { MagnifyingGlass } from '@phosphor-icons/react'
 import { Pagination } from '@mui/material'
 import { useRouter } from 'next/router'
 import { useQuery } from '@tanstack/react-query'
 
 /* eslint-disable react/react-in-jsx-scope */
-export interface CharacterProps {
-  character: {
-    id: number
-    name: string
-    species: string
-    image: string
-  }[]
-}
-export default function Personagens() {
+
+export default function Character() {
   const [page, setPage] = useState(1)
   const [search, setSearch] = useState('')
   const router = useRouter()
@@ -26,6 +19,7 @@ export default function Personagens() {
         (res) => res.json()
       )
   })
+
   const searchCharacters = data?.results?.filter(
     (character: { name: string }) =>
       character.name.toLowerCase().includes(search.toLowerCase())
@@ -64,14 +58,14 @@ export default function Personagens() {
           />
         </div>
       </form>
-      {searchCharacters.map(
+      {searchCharacters?.map(
         (character: {
           id: number
           name: string
           species: string
           image: string
         }) => (
-          <CardPersonagem
+          <CardCharacter
             key={character.id}
             id={character.id}
             name={character.name}
@@ -81,7 +75,7 @@ export default function Personagens() {
         )
       )}
       <Pagination
-        count={data?.info.pages}
+        count={data?.info?.pages}
         color="primary"
         page={page}
         onChange={handlePaginationChange}
