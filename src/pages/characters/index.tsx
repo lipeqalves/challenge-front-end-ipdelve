@@ -2,8 +2,8 @@ import { SetStateAction, useEffect, useState } from 'react'
 import CardCharacter from '../../components/CardCharacter'
 import { Pagination } from '@mui/material'
 import { useRouter } from 'next/router'
-import { useQuery } from '@tanstack/react-query'
 import Search from '@/components/Search'
+import { useRickAndMortyApi } from '@/service/api'
 
 /* eslint-disable react/react-in-jsx-scope */
 
@@ -12,15 +12,9 @@ export default function Character() {
   const [search, setSearch] = useState('')
   const router = useRouter()
 
-  const { isLoading, error, data } = useQuery({
-    queryKey: ['repoData', page],
-    queryFn: () =>
-      fetch(`https://rickandmortyapi.com/api/character/?page=${page}`).then(
-        (res) => res.json()
-      )
-  })
+  const characterData = useRickAndMortyApi('character', page)
 
-  const searchCharacters = data?.results?.filter(
+  const searchCharacters = characterData?.characters?.filter(
     (character: { name: string }) =>
       character.name.toLowerCase().includes(search.toLowerCase())
   )
@@ -39,8 +33,9 @@ export default function Character() {
     router.push(`characters/?page=${value}`, undefined, { shallow: true })
   }
 
-  if (isLoading) return 'Loading...'
-  if (error) return 'An error has occurred: ' + error.message
+  if (characterData?.isLoading) return 'Loading...'
+  if (characterData?.error)
+    return 'An error has occurred: ' + characterData.error.message
   return (
     <main className="flex flex-wrap gap-8 w-10/12 items-center justify-center mt-28 mb-12 mx-auto relative">
       <Search>
@@ -54,24 +49,17 @@ export default function Character() {
           placeholder="Search"
         />
       </Search>
-      {searchCharacters?.map(
-        (character: {
-          id: number
-          name: string
-          species: string
-          image: string
-        }) => (
-          <CardCharacter
-            key={character.id}
-            id={character.id}
-            name={character.name}
-            species={character.species}
-            image={character.image}
-          />
-        )
-      )}
+      {searchCharacters?.map((character) => (
+        <CardCharacter
+          key={character.id}
+          id={character.id}
+          name={character.name}
+          species={character.species}
+          image={character.image}
+        />
+      ))}
       <Pagination
-        count={data?.info?.pages}
+        count={characterData?.numberPages}
         color="primary"
         page={page}
         onChange={handlePaginationChange}

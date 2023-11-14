@@ -1,28 +1,25 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useQuery } from '@tanstack/react-query'
+//import { useQuery } from '@tanstack/react-query'
 import CardLocation from '../../components/CardLocation'
 import Search from '../../components/Search'
 import { SetStateAction, useState } from 'react'
 import { Pagination } from '@mui/material'
 import { useRouter } from 'next/router'
+import { useRickAndMortyApi } from '@/service/api'
+
 export default function Location() {
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(1)
   const router = useRouter()
+  const dataLocation = useRickAndMortyApi('location', page)
 
-  const { isLoading, error, data } = useQuery({
-    queryKey: ['location', page],
-    queryFn: () =>
-      fetch(`https://rickandmortyapi.com/api/location/?page=${page}`).then(
-        (res) => res.json()
-      )
-  })
+  if (dataLocation?.isLoading) return 'Loading...'
+  if (dataLocation?.error)
+    return 'An error has occurred: ' + dataLocation?.error.message
 
-  if (isLoading) return 'Loading...'
-  if (error) return 'An error has occurred: ' + error.message
-
-  const searchLocations = data?.results?.filter((location: { name: string }) =>
-    location.name.toLowerCase().includes(search.toLowerCase())
+  const searchLocations = dataLocation?.locations?.filter(
+    (location: { name: string }) =>
+      location.name.toLowerCase().includes(search.toLowerCase())
   )
 
   function handlePaginationChange(
@@ -44,26 +41,18 @@ export default function Location() {
           placeholder="Search"
         />
       </Search>
-      {searchLocations.map(
-        (location: {
-          id: number
-          name: string
-          type: string
-          dimension: string
-          residents: string | []
-        }) => (
-          <CardLocation
-            key={location.id}
-            name={location.name}
-            type={location.type}
-            dimension={location.dimension}
-            numberOfResidents={location.residents.length}
-            id={location.id}
-          />
-        )
-      )}
+      {searchLocations?.map((location) => (
+        <CardLocation
+          key={location.id}
+          name={location.name}
+          type={location.type}
+          dimension={location.dimension}
+          numberOfResidents={location.residents}
+          id={location.id}
+        />
+      ))}
       <Pagination
-        count={data?.info?.pages}
+        count={dataLocation?.numberPages}
         color="primary"
         page={page}
         onChange={handlePaginationChange}
