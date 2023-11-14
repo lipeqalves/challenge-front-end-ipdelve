@@ -5,8 +5,8 @@ import Image from 'next/image'
 import logoHome from '../assets/Logo-home.png'
 export default function Home() {
   return (
-    <main
-      className={` my-0 mx-auto  h-96 flex flex-col justify-around items-start `}
+    <section
+      className={` my-0 mx-auto max-w-6xl h-96 flex flex-col justify-around items-center `}
     >
       <div className="w-80 flex items-center justify-center">
         <Image
@@ -23,6 +23,6 @@ export default function Home() {
       <p className={`${spectral400.className} `}>
         Personagens, localizações, episódios e muito mais.
       </p>
-    </main>
+    </section>
   )
 }

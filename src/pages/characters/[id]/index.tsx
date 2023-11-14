@@ -13,6 +13,7 @@ import {
 } from '@phosphor-icons/react'
 
 import { useRouter } from 'next/router'
+import { ParsedUrlQuery } from 'querystring'
 
 export interface CharacterDetailsProps {
   characterDetails: {
@@ -32,7 +33,13 @@ export default function CharacterDetails(
 ) {
   const router = useRouter()
   if (router.isFallback) {
-    return <div>Loading...</div>
+    return (
+      <div
+        className={`${spectral400.className}  flex justify-between items-center h-full max-w-5xl my-2 mx-auto text-center `}
+      >
+        Loading...
+      </div>
+    )
   }
 
   return (
@@ -100,8 +107,11 @@ export async function getStaticPaths() {
     fallback: 'blocking'
   }
 }
-export async function getStaticProps({ params }) {
-  const id = params.id
+interface IParams extends ParsedUrlQuery {
+  id: string
+}
+export async function getStaticProps(context: { params: IParams }) {
+  const { id } = context.params
   const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
   const data = await res.json()
 

@@ -28,7 +28,7 @@ export default function CardCharacter(props: Readonly<CardCharacterProps>) {
         <span className={`${spectral400.className}`}>{props.species}</span>
       </footer>
       <Link
-        href={`/personagens/${props.id}`}
+        href={`/characters/${props.id}`}
         className="flex items-center justify-center p-4"
       >
         <button

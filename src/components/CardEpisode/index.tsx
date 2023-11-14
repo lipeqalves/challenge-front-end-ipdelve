@@ -22,29 +22,29 @@ export default function CardEpisode(props: Readonly<CardEpsodeProps>) {
       >
         <strong>
           {' '}
-          <span className={`${creepster.className} text-gray-rm-100`}>
+          <span className={`${creepster.className} text-gray-rm-200`}>
             Name :{' '}
           </span>{' '}
           {props.name}
         </strong>
         <strong>
           {' '}
-          <span className={`${creepster.className} text-gray-rm-100`}>
+          <span className={`${creepster.className} text-gray-rm-200`}>
             Episode :{' '}
           </span>{' '}
           {props.episode}
         </strong>
         <strong>
           {' '}
-          <span className={`${creepster.className} text-gray-rm-100`}>
+          <span className={`${creepster.className} text-gray-rm-200`}>
             Air Date :{' '}
           </span>{' '}
           {props.airDate}
         </strong>
       </section>
       <strong className={`text-green-rm-300`}>
-        <span className={`${creepster.className} text-gray-rm-100`}>
-          Number Of Residents :{' '}
+        <span className={`${creepster.className} text-gray-rm-200`}>
+          Number Of Characters :{' '}
         </span>{' '}
         {props.numberOfCharacters}
       </strong>

@@ -18,14 +18,31 @@ export default function CardLocation(props: Readonly<CardCharacterProps>) {
     >
       <Planet size={26} className="absolute -top-4" />
       <section
-        className={`${creepster.className} text-green-rm-300 flex flex-col ml-4 mt-4 items-cente justify-center`}
+        className={`${creepster.className} text-gray-rm-200 flex flex-col ml-4 mt-4 items-cente justify-center`}
       >
-        <strong>{props.type}</strong>
-        <strong>{props.name}</strong>
-        <strong>{props.dimension}</strong>
+        <strong>
+          <span className={`${spectral700.className} text-green-rm-300`}>
+            Type:{' '}
+          </span>
+          {props.type}
+        </strong>
+        <strong>
+          {' '}
+          <span className={`${spectral700.className} text-green-rm-300`}>
+            Name:{' '}
+          </span>{' '}
+          {props.name}
+        </strong>
+        <strong>
+          {' '}
+          <span className={`${spectral700.className} text-green-rm-300`}>
+            Dimension:{' '}
+          </span>
+          {props.dimension}
+        </strong>
       </section>
-      <strong className={`${creepster.className} text-green-rm-300`}>
-        <span className={`${spectral700.className} text-gray-rm-100`}>
+      <strong className={`${creepster.className} text-gray-rm-200 `}>
+        <span className={`${spectral700.className} text-green-rm-300`}>
           Number Of Residents :{' '}
         </span>{' '}
         {props.numberOfResidents}
