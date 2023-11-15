@@ -14,6 +14,8 @@ import {
 
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
+import CharacterDetailsSkeleton from '@/components/CharacterDetailsSkeleton'
+import BackToButton from '@/components/BackToButton'
 
 export interface CharacterDetailsProps {
   characterDetails: {
@@ -33,62 +35,56 @@ export default function CharacterDetails(
 ) {
   const router = useRouter()
   if (router.isFallback) {
-    return (
-      <div
-        className={`${spectral400.className}  flex justify-between items-center h-full max-w-5xl my-2 mx-auto text-center `}
-      >
-        Loading...
-      </div>
-    )
+    return <CharacterDetailsSkeleton />
   }
 
   return (
     <section
-      className={`${spectral400.className}  flex justify-between items-center h-full max-w-5xl my-2 mx-auto text-center `}
+      className={`${spectral400.className} flex-wrap flex justify-between items-center h-full max-w-5xl my-0 mx-auto text-center `}
     >
-      <div className="w-1/2 h-3/4 ">
+      <BackToButton name={'Back to Characters'} page={'/characters'} />
+      <div className="w-1/2 h-auto ">
         <Image
           src={character.characterDetails.image}
-          width={520}
-          height={520}
+          width={320}
+          height={420}
           className="object-cover rounded-2xl shadow-img"
           alt={character.characterDetails.name}
         />
       </div>
 
-      <div className="w-1/2 h-3/4 ">
+      <div className="w-1/2 h-auto border border-solid border-green-rm-300 shadow-img">
         <h1 className={`${creepster.className} mt-6 text-2xl`}>
           {character.characterDetails.name}
         </h1>
         <p className="flex justify-center gap-4 my-4">
           {' '}
-          <Video size={24} /> Participou de {character.characterDetails.episode}{' '}
-          episódios
+          <Video className="text-green-rm-500" size={24} /> Participou de{' '}
+          {character.characterDetails.episode} episódios
         </p>
-        <ul className="flex flex-col gap-2 justify-center items-start ml-8 my-2">
-          <li className="flex gap-2">
-            {' '}
-            <Pulse size={24} /> {character.characterDetails.status}
-          </li>
-          <li className="flex gap-2">
-            <Alien size={24} /> {character.characterDetails.species}
-          </li>
-          <li className="flex gap-2">
-            {' '}
-            <GenderIntersex size={24} /> {character.characterDetails.gender}
-          </li>
-        </ul>
-        <div className="flex w-full justify-evenly items-center gap-2">
-          <div className="flex flex-col items-center justify-around bg-gray-rm-300 w-36 h-40 rounded-2xl">
-            <Planet size={32} />
-            <p>Planet</p>
+        <div className="flex justify-around my-4">
+          <ul className="flex flex-col gap-2 justify-center items-start ml-4 my-2">
+            <li className="flex gap-2">
+              {' '}
+              <Pulse className="text-green-rm-500" size={24} />{' '}
+              {character.characterDetails.status}
+            </li>
+            <li className="flex gap-2">
+              <Alien className="text-green-rm-500" size={24} />{' '}
+              {character.characterDetails.species}
+            </li>
+            <li className="flex gap-2">
+              {' '}
+              <GenderIntersex className="text-green-rm-500" size={24} />{' '}
+              {character.characterDetails.gender}
+            </li>
+          </ul>
+          <div className="flex flex-col items-center justify-evenly bg-gray-rm-300 w-40 h-40 rounded-2xl">
+            <Planet className="text-green-rm-500" size={24} />
             <p>{character.characterDetails.origin}</p>
-          </div>
-          <div className="flex flex-col items-center justify-around bg-gray-rm-300 w-36 h-40 rounded-2xl">
-            <MapPin size={32} />
-            <p className="w-1/2">{character.characterDetails.location}</p>
-            <p></p>
-          </div>
+            <MapPin className="text-green-rm-500" size={24} />
+            <p>{character.characterDetails.location}</p>
+          </div>{' '}
         </div>
       </div>
     </section>

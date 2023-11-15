@@ -6,6 +6,7 @@ import { Pagination } from '@mui/material'
 import { useRouter } from 'next/router'
 import CardEpisode from '@/components/CardEpisode'
 import { useRickAndMortyApi } from '@/service/api'
+import BackToButton from '@/components/BackToButton'
 export default function Location() {
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(1)
@@ -31,6 +32,7 @@ export default function Location() {
 
   return (
     <main className="flex flex-wrap gap-8 w-10/12 items-center justify-center mt-28 mb-12 mx-auto relative">
+      <BackToButton name={'Back to home'} page={'/'} />
       <Search>
         <input
           type="search"

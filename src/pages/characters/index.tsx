@@ -4,6 +4,7 @@ import { Pagination } from '@mui/material'
 import { useRouter } from 'next/router'
 import Search from '@/components/Search'
 import { useRickAndMortyApi } from '@/service/api'
+import BackToButton from '@/components/BackToButton'
 
 /* eslint-disable react/react-in-jsx-scope */
 
@@ -38,6 +39,7 @@ export default function Character() {
     return 'An error has occurred: ' + characterData.error.message
   return (
     <main className="flex flex-wrap gap-8 w-10/12 items-center justify-center mt-28 mb-12 mx-auto relative">
+      <BackToButton name={'Back to home'} page={'/'} />
       <Search>
         {' '}
         <input

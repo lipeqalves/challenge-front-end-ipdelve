@@ -53,7 +53,7 @@ export function useRickAndMortyApi(resource: string, page: number) {
         id: episode.id,
         name: episode.name,
         air_date: episode.air_date,
-        characters: episode.characters.length,
+        characters: episode.characters?.length,
         episode: episode.episode
       }
     })
@@ -66,7 +66,7 @@ export function useRickAndMortyApi(resource: string, page: number) {
         name: location.name,
         type: location.type,
         dimension: location.dimension,
-        residents: location.residents.length
+        residents: location.residents?.length
       }
     })
     const numberPages = data?.info.pages

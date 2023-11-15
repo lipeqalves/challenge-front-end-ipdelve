@@ -11,7 +11,7 @@ import { spectral400 } from '../../styles/fonts'
 export default function Header() {
   return (
     <header
-      className={`flex justify-around items-center p-4 bg-gray-rm-300 ${spectral400.className} bold text-xl`}
+      className={`flex justify-around items-center p-4 bg-gray-rm-300 ${spectral400.className} text-xl relative`}
     >
       <Link href="/">
         <Image
@@ -23,19 +23,19 @@ export default function Header() {
       <nav>
         <ul className="flex gap-6 text-gray-rm-100">
           <Link href="/characters">
-            <li className="flex gap-1 items-center justify-center border-b-2 border-solid border-transparent hover:border-green-rm-500  p-1">
+            <li className="flex gap-1 items-center justify-center border-b-2 border-solid border-transparent hover:border-green-rm-500 transition duration-300 ease-in-out p-1">
               <Image src={smiley} alt={''} />
               Characters
             </li>
           </Link>
           <Link href="/location">
-            <li className="flex gap-1 items-center justify-center border-b-2 border-solid border-transparent hover:border-green-rm-500  p-1">
+            <li className="flex gap-1 items-center justify-center border-b-2 border-solid border-transparent hover:border-green-rm-500 transition duration-300 ease-in-out p-1">
               <Image src={local} alt={''} />
               Location
             </li>
           </Link>
           <Link href="/episode">
-            <li className="flex gap-1 items-center justify-center border-b-2 border-solid border-transparent hover:border-green-rm-500  p-1">
+            <li className="flex gap-1 items-center justify-center border-b-2 border-solid border-transparent hover:border-green-rm-500 transition duration-300 ease-in-out p-1">
               <Image src={play} alt={''} />
               Episode
             </li>
