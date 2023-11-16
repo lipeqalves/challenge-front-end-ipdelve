@@ -38,20 +38,20 @@ export default function CharacterDetails(
 
   return (
     <section
-      className={`${spectral400.className} flex-wrap flex justify-between items-center h-full max-w-5xl my-0 mx-auto text-center `}
+      className={`${spectral400.className} flex flex-col md:flex-row gap-4 justify-around items-center h-full max-w-dm my-0 mx-auto text-center `}
     >
       <BackToButton name={'Back to Characters'} page={'/characters'} />
-      <div className="w-1/2 h-auto ">
+      <div className="w-full md:w-1/3  lg:w-1/4 h-auto">
         <Image
           src={character.characterDetails.image}
-          width={320}
-          height={420}
-          className="object-cover rounded-2xl shadow-img"
+          width={768}
+          height={768}
+          className="object-cover md:rounded-2xl md:shadow-img"
           alt={character.characterDetails.name}
         />
       </div>
 
-      <div className="w-1/2 h-auto border border-solid border-green-rm-300 shadow-img">
+      <div className="w-full md:w-1/2 h-auto md:border md:border-solid md:border-green-rm-300 md:shadow-img">
         <h1 className={`${creepster.className} mt-6 text-2xl`}>
           {character.characterDetails.name}
         </h1>
