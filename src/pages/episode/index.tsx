@@ -1,5 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
-
 import Search from '../../components/Search'
 import { SetStateAction, useState } from 'react'
 import { Pagination } from '@mui/material'

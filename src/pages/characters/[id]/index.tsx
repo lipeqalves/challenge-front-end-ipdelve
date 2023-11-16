@@ -1,5 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
-
 import Image from 'next/image'
 
 import { spectral400, creepster } from '../../../styles/fonts'

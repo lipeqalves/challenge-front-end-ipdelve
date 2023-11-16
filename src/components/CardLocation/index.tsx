@@ -1,5 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
-
 import { Planet } from '@phosphor-icons/react'
 
 import { spectral700, creepster } from '../../styles/fonts'

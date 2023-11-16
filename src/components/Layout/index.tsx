@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import Footer from '../Footer'
 import Header from '../Header'
 

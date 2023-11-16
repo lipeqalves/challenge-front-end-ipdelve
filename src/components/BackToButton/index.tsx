@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { spectral400 } from '@/styles/fonts'
 import { CaretLeft } from '@phosphor-icons/react'
 import Link from 'next/link'

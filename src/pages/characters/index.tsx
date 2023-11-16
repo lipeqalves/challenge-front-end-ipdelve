@@ -6,8 +6,6 @@ import Search from '@/components/Search'
 import { useRickAndMortyApi } from '@/service/api'
 import BackToButton from '@/components/BackToButton'
 
-/* eslint-disable react/react-in-jsx-scope */
-
 export default function Character() {
   const [page, setPage] = useState(1)
   const [search, setSearch] = useState('')

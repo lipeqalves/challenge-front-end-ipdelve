@@ -1,5 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
-//import { useQuery } from '@tanstack/react-query'
 import CardLocation from '../../components/CardLocation'
 import Search from '../../components/Search'
 import { SetStateAction, useState } from 'react'

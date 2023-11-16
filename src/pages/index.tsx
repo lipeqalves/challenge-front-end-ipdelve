@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { spectral700, spectral400 } from '../styles/fonts'
 import Image from 'next/image'
 
