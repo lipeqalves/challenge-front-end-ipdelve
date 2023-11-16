@@ -16,7 +16,7 @@ export default function Header() {
   useEffect(() => {
     setCurrentPage(pathname)
   }, [pathname])
-
+  console.log(currentPage)
   return (
     <header className={`w-full bg-gray-rm-300 ${spectral400.className}`}>
       <nav className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
@@ -55,8 +55,7 @@ export default function Header() {
                 <li className="w-40 md:w-full flex gap-1 items-center justify-start hover:text-green-rm-500 transition duration-300 ease-in-out p-1">
                   <Smiley
                     size={28}
-                    className={`${currentPage === '/characters[id]' ||
-                      ('/characters' && 'text-green-rm-500')
+                    className={`${(currentPage === '/characters/[id]' || currentPage === '/characters') && 'text-green-rm-500'
                       }`}
                   />
                   Characters
