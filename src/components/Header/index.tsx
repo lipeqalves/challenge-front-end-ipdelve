@@ -16,7 +16,6 @@ export default function Header() {
   useEffect(() => {
     setCurrentPage(pathname)
   }, [pathname])
-  console.log(currentPage)
   return (
     <header className={`w-full bg-gray-rm-300 ${spectral400.className}`}>
       <nav className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
