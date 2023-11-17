@@ -1,40 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#  Desafio FRONT-END IPDelve
+Essa é uma solução para o desafio frontend proposto pela empresa iPDelve, como parte do processo seletivo, ele tem como objetivo desenvolver um sistema front-end dinâmico utilizando React JS + NextJS e Typescript, que consuma a API "The Rick and Morty". 
+ 
+## Índice
 
-## Getting Started
+- [Visão geral](#visão-geral)
+  - [O desafio](#o-desafio)
+  - [Screenshot](#screenshot)
+  - [Solução](#solução)
+- [Desenvolvimento](#desenvolvimento)
+  - [Tecnologias](#tecnologias)
+  - [Aprendizado](#aprendizado)
+- [Autor](#autor)
 
-First, run the development server:
+## Visão geral
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### O desafio
+- Desenvolver um sistema front-end dinâmico que consuma a API "The Rick and Morty
+    - O sistema deve listar e paginar informações sobre personagens, locais e episódios;
+    - Incluir um campo de busca que abrange os três recursos principais;
+    - Permitir a visualização detalhada dos personagens.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Solução
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- link url: [The Rick and Morty]()
+- Instalar e rodar no pc local:
+  - Abra o terminal em uma pasta de sua preferência e adicione os seguintes comandos para fazer um clone do projeto:
+  ```
+  git clone https://github.com/lipeqalves/challenge-front-end-ipdelve.git
+  ```
+  - Para entrar na pasta do projeto:
+  ``` 
+  cd challenge-front-end-ipdelve
+  ```
+  - Instale as dependências necessárias com o seguinte comando:
+  ```
+  npm install
+  ```
+  - Para inicialização do projeto utilize o comando:
+  ```
+  npm run dev
+  ```
+### Screenshot
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+![home](https://github.com/lipeqalves/challenge-front-end-ipdelve/assets/102266909/0ef033f2-234b-4587-94e4-ed94058d89be)
+![characters](https://github.com/lipeqalves/challenge-front-end-ipdelve/assets/102266909/54437962-5b20-4325-8fe7-d25ffedb80a9)
+![characters busca](https://github.com/lipeqalves/challenge-front-end-ipdelve/assets/102266909/a0b861be-1be3-42fe-a89d-5d2c9a487ada)
+![characters paginação](https://github.com/lipeqalves/challenge-front-end-ipdelve/assets/102266909/ffa408c8-248d-4f02-8f49-317d6716c121)
+![characters detalhes](https://github.com/lipeqalves/challenge-front-end-ipdelve/assets/102266909/c945e13a-6cb3-41af-9533-6b6125108bef)
+![location](https://github.com/lipeqalves/challenge-front-end-ipdelve/assets/102266909/fa668df5-5c7d-469c-a788-44f4f7400410)
+![episode](https://github.com/lipeqalves/challenge-front-end-ipdelve/assets/102266909/a3612e54-8c85-401f-929e-77d4f6056c38)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+##  Desenvolvimento
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Tecnologias
 
-## Learn More
+-  [Nextjs](https://nextjs.org/) 
+-  [React](https://reactjs.org/) 
+-  [TypeScript](https://typescriptlang.org/) 
+-  [Phosphoricons](https://phosphoricons.com/) 
+-  [React Query](https://tanstack.com/query/latest) 
+-  [Tailwindcss](https://tailwindcss.com/) 
+     - [Tailwind CHEAT SHEET](https://nerdcave.com/tailwind-cheat-sheet) 
 
-To learn more about Next.js, take a look at the following resources:
+### Aprendizado
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O projeto permite a aplicação prática de tecnologias amplamente utilizadas no desenvolvimento front-end, como React JS, NextJS, Typescript, e TailwindCSS. Isso proporciona uma oportunidade de consolidar conhecimentos e ganhar experiência com essas ferramentas. Além de praticar boas práticas de desenvolvimento, lidar com integração de APIs e melhorar a experiência do usuário. Por fim esse projeto ajudou no meu crescimento pessoal e profissional, pois tive que superar vários obstáculos, tomar decisões técnicas e buscar soluções inovadoras.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Autor
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Linkedin - [Filipe Alves](https://www.linkedin.com/in/filipeqalves/)
+- iPdelve. - [iPdelve.](https://www.linkedin.com/company/ipdelve/)
