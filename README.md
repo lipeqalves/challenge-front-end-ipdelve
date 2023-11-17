@@ -1,6 +1,7 @@
-#  Desafio FRONT-END IPDelve
-Essa é uma solução para o desafio frontend proposto pela empresa iPDelve, como parte do processo seletivo, ele tem como objetivo desenvolver um sistema front-end dinâmico utilizando React JS + NextJS e Typescript, que consuma a API "The Rick and Morty". 
- 
+# Desafio FRONT-END IPDelve
+
+Essa é uma solução para o desafio frontend proposto pela empresa iPDelve, como parte do processo seletivo, ele tem como objetivo desenvolver um sistema front-end dinâmico utilizando React JS + NextJS e Typescript, que consuma a API "The Rick and Morty".
+
 ## Índice
 
 - [Visão geral](#visão-geral)
@@ -15,31 +16,40 @@ Essa é uma solução para o desafio frontend proposto pela empresa iPDelve, com
 ## Visão geral
 
 ### O desafio
+
 - Desenvolver um sistema front-end dinâmico que consuma a API "The Rick and Morty
-    - O sistema deve listar e paginar informações sobre personagens, locais e episódios;
-    - Incluir um campo de busca que abrange os três recursos principais;
-    - Permitir a visualização detalhada dos personagens.
+  - O sistema deve listar e paginar informações sobre personagens, locais e episódios;
+  - Incluir um campo de busca que abrange os três recursos principais;
+  - Permitir a visualização detalhada dos personagens.
 
 ### Solução
 
 - link url: [The Rick and Morty]()
 - Instalar e rodar no pc local:
   - Abra o terminal em uma pasta de sua preferência e adicione os seguintes comandos para fazer um clone do projeto:
+
   ```
   git clone https://github.com/lipeqalves/challenge-front-end-ipdelve.git
   ```
+
   - Para entrar na pasta do projeto:
-  ``` 
+
+  ```
   cd challenge-front-end-ipdelve
   ```
+
   - Instale as dependências necessárias com o seguinte comando:
+
   ```
   npm install
   ```
+
   - Para inicialização do projeto utilize o comando:
+
   ```
   npm run dev
   ```
+
 ### Screenshot
 
 ![home](https://github.com/lipeqalves/challenge-front-end-ipdelve/assets/102266909/0ef033f2-234b-4587-94e4-ed94058d89be)
@@ -50,17 +60,17 @@ Essa é uma solução para o desafio frontend proposto pela empresa iPDelve, com
 ![location](https://github.com/lipeqalves/challenge-front-end-ipdelve/assets/102266909/fa668df5-5c7d-469c-a788-44f4f7400410)
 ![episode](https://github.com/lipeqalves/challenge-front-end-ipdelve/assets/102266909/a3612e54-8c85-401f-929e-77d4f6056c38)
 
-##  Desenvolvimento
+## Desenvolvimento
 
 ### Tecnologias
 
--  [Nextjs](https://nextjs.org/) 
--  [React](https://reactjs.org/) 
--  [TypeScript](https://typescriptlang.org/) 
--  [Phosphoricons](https://phosphoricons.com/) 
--  [React Query](https://tanstack.com/query/latest) 
--  [Tailwindcss](https://tailwindcss.com/) 
-     - [Tailwind CHEAT SHEET](https://nerdcave.com/tailwind-cheat-sheet) 
+- [Nextjs](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://typescriptlang.org/)
+- [Phosphoricons](https://phosphoricons.com/)
+- [React Query](https://tanstack.com/query/latest)
+- [Tailwindcss](https://tailwindcss.com/)
+  - [Tailwind CHEAT SHEET](https://nerdcave.com/tailwind-cheat-sheet)
 
 ### Aprendizado
 

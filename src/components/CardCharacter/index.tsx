@@ -16,7 +16,6 @@ export default function CardCharacter(props: Readonly<CardCharacterProps>) {
       className={`w-64 h-80 bg-gray-rm-300 rounded-t-lg ${spectral700.className}`}
     >
       <Image
-
         src={props.image}
         width={256}
         height={192}

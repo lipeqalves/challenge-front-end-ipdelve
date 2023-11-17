@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
@@ -46,6 +47,7 @@ export default function Header() {
         </div>
         <div>
           <div
+            // eslint-disable-next-line prettier/prettier
             className={`flex-1  justify-self-center  pb-3  mt-8 md:block md:pb-0 md:mt-0 ${isNavOpen ? 'block' : 'hidden'
               }`}
           >
@@ -54,7 +56,9 @@ export default function Header() {
                 <li className="w-40 md:w-full flex gap-1 items-center justify-start hover:text-green-rm-500 transition duration-300 ease-in-out p-1">
                   <Smiley
                     size={28}
-                    className={`${(currentPage === '/characters/[id]' || currentPage === '/characters') && 'text-green-rm-500'
+                    className={`${(currentPage === '/characters/[id]' ||
+                      currentPage === '/characters') &&
+                      'text-green-rm-500'
                       }`}
                   />
                   Characters
