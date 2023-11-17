@@ -16,7 +16,9 @@ export default function Home() {
         />
       </div>
 
-      <p className={`text-5xl w-96 text-center md:text-start h-28 ${spectral700.className}`}>
+      <p
+        className={`text-5xl w-96 text-center md:text-start h-28 ${spectral700.className}`}
+      >
         Saiba tudo em um só <span className="text-green-rm-300">lugar</span>.
       </p>
       <p className={`${spectral400.className} text-center md:text-start w-96`}>
