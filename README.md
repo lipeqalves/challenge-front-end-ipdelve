@@ -24,7 +24,7 @@ Essa é uma solução para o desafio frontend proposto pela empresa iPDelve, com
 
 ### Solução
 
-- link url: [The Rick and Morty]()
+- link url: [The Rick and Morty](https://challenge-front-end-ipdelve.vercel.app/)
 - Instalar e rodar no pc local:
   - Abra o terminal em uma pasta de sua preferência e adicione os seguintes comandos para fazer um clone do projeto:
 
