@@ -123,6 +123,6 @@ export async function getStaticProps(context: { params: IParams }) {
         episode: data.episode.length
       }
     },
-    revalidate: 120
+    revalidate: 10
   }
 }
