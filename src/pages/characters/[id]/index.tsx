@@ -98,7 +98,7 @@ export async function getStaticPaths() {
   }))
   return {
     paths,
-    fallback: 'blocking'
+    fallback: true
   }
 }
 interface IParams extends ParsedUrlQuery {
@@ -106,6 +106,7 @@ interface IParams extends ParsedUrlQuery {
 }
 export async function getStaticProps(context: { params: IParams }) {
   const { id } = context.params
+  console.log(id)
   const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
   const data = await res.json()
 
@@ -123,6 +124,6 @@ export async function getStaticProps(context: { params: IParams }) {
         episode: data.episode.length
       }
     },
-    revalidate: 10
+    revalidate: 60
   }
 }
