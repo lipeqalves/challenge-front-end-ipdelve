@@ -12,7 +12,7 @@ import {
 
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
-import CharacterDetailsSkeleton from '@/components/CharacterDetailsSkeleton'
+//import CharacterDetailsSkeleton from '@/components/CharacterDetailsSkeleton'
 import BackToButton from '@/components/BackToButton'
 
 export interface CharacterDetailsProps {
@@ -33,7 +33,7 @@ export default function CharacterDetails(
 ) {
   const router = useRouter()
   if (router.isFallback) {
-    return <CharacterDetailsSkeleton />
+    return <p>Loading...</p>
   }
 
   return (
