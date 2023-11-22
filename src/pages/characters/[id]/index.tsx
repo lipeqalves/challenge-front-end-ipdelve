@@ -12,7 +12,7 @@ import {
 
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
-//import CharacterDetailsSkeleton from '@/components/CharacterDetailsSkeleton'
+import CharacterDetailsSkeleton from '@/components/CharacterDetailsSkeleton'
 import BackToButton from '@/components/BackToButton'
 
 export interface CharacterDetailsProps {
@@ -33,7 +33,7 @@ export default function CharacterDetails(
 ) {
   const router = useRouter()
   if (router.isFallback) {
-    return <p>Loading...</p>
+    return <CharacterDetailsSkeleton />
   }
 
   return (
@@ -90,6 +90,13 @@ export default function CharacterDetails(
 }
 
 export async function getStaticPaths() {
+  if (process.env.SKIP_BUILD_STATIC_GENERATION) {
+    return {
+      paths: [],
+      fallback: 'blocking'
+    }
+  }
+
   const res = await fetch(`https://rickandmortyapi.com/api/character`)
   const data = await res.json()
 
